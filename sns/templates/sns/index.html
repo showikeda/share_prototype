@@ -27,27 +27,26 @@
     </div>
     <div class="main">
         <div class="topics">
-            <h1>記事一覧</h1>
-            {% if searchForm %}
-                <form action='{% url "sns:index" %}' method='get'>
-                    <div class='form-group'>
-                        {{ searchForm }}
-                        <input type="submit" value="OK" />
-                    </div>
-                </form>
-            {% endif %}
-            <p>{{ message }}</p>
+            <p>最新の記事</p>
             {% for article in articles %}
-                <p>
-                    {{ article.content }},{{ article.user_name }},
-                    <a href="{% url 'sns:detail' article.id %}">詳細</a>,
-                    <a href="{% url 'sns:delete' article.id %}">削除</a>
-                </p>
+                <p><a href="{% url 'view_article' article.pk %}">{{ article.title }} - {{ article.posted_at }}</a></p>
             {% endfor %}
-            <p>
-                <a href="{% url 'sns:new' %}">新規</a>
-            </p>
-            <i class="more fas fa-angle-double-down fa-2x fa-border"></i>
+            <div class="topics-over">
+                <p>
+                    記事一覧へ
+                    <a href="{% url 'article_all' %}">
+                        <i class="more fas fa-angle-double-down fa-2x fa-border"></i>
+                    </a>
+                </p>
+            </div>
+            <div class="topics-over">
+                <p>
+                    記事投稿へ
+                    <a href="{% url 'new' %}">
+                        <i class="more fas fa-angle-double-down fa-2x fa-border"></i>
+                    </a>
+                </p>
+            </div>
         </div>
     </div>
 {% endblock %}
