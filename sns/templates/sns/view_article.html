@@ -4,13 +4,40 @@
     <meta charset="utf-8" />
     <title>{{ article.title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        function api_like() {
+            var api_url = "{%url 'api_like' article.pk %}";
+            var btn = document.getElementById("like");
+            var request = new XMLHttpRequest();
+            request.onreadystatechange = function () {
+                if (request.readyState === 4 && request.status === 200) {
+                    var received_data = JSON.parse(request.responseText);
+                    btn.innerText = received_data.like;
+                }
+            }
+            request.open("GET",api_url);
+            request.send();
+        }
+    </script>
 </head>
 <body>
+    <a href="{% url 'article_all' %}">記事一覧へ</a>
+    <a href="{% url 'index' %}">トップページへ</a>
     <h3>{{ article.title }}</h3>
     <small>投稿日時 : {{ article.posted_at }}</small>
     <small>最終更新 : {{ article.last_modify }}</small>
     <p>{{ article.text }}</p>
-    <a href="{% url 'article_all' %}">記事一覧へ</a>
-    <a href="{% url 'index' %}">トップページへ</a>
+    <p><a onclick="api_like()"><span id="like">{{ article.like }}</span>いいね！</a></p>
+    <form action="" method="POST">
+        <p><lable for="com">コメント</lable></p>
+        {% csrf_token %}
+        <textarea name="text" id="com" cols="30" rows="10"></textarea>
+        <button type="submit">投稿</button>
+    </form>
+    {% for comment in article.comments.all %}
+        <p>{{ comment.text }}<br><small>{{ comment.posted_at }}</small></p>
+    {% empty %}
+    <p>コメントはありません</p>
+    {% endfor %}
 </body>
 </html>

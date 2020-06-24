@@ -1,11 +1,14 @@
 from django.shortcuts import render, redirect
 from django.http import Http404
+from django.http.response import JsonResponse
 from . import models
+
 
 def index(request):
     template_name = "sns/index.html"
     context = {"articles": models.Article.objects.all()}
     return render(request, template_name, context)
+
 
 def new(request):
     template_name = "sns/new.html"
@@ -26,6 +29,8 @@ def view_article(request, pk):
         article = models.Article.objects.get(pk=pk)
     except models.Article.DoesNotExist:
         raise Http404
+    if request.method == "POST":
+        models.Comment.objects.create(text=request.POST["text"], article=article)
     context = {"article": article}
     return render(request, template_name, context)
 
@@ -62,3 +67,13 @@ def like(request, pk):
     article.like += 1
     article.save()
     return redirect(view_article, pk)
+
+
+def api_like(request, pk):
+    try:
+        article = models.Article.objects.get(pk=pk)
+    except models.Article.DoesNotExist:
+        raise Http404
+    article.like += 1
+    article.save()
+    return JsonResponse({"like": article.like})
