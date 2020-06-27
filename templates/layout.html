@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>あんにょん</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+    <!-- ここからヘッダーを作ります。 -->
+    <header>
+        <div class="header-container">
+            <div class="header-left">
+                <h1 class="logo">あんにょん</h1>
+            </div>
+            <i class="fas fa-bars menu-icon"></i>
+            <div class="header-right">
+                <a href="#" class="login">ログイン</a>
+            </div>
+        </div>
+    </header>
+        {% block content %}
+        {% endblock %}
+    <footer></footer>
+    </body>
+</html>
