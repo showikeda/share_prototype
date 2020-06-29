@@ -1,39 +1,33 @@
 <!DOCTYPE html>
-{% load static %}
 <html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <title>あんにょん</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    </head>
-    <body>
-    <!-- ここからヘッダーを作ります。 -->
-    <header>
-        <div class="header-container">
-            <div class="header-left">
-                <h1 class="logo">あんにょん</h1>
-            </div>
-            <i class="fas fa-bars menu-icon"></i>
-            <div class="header-right">
-                <ul>
-                    {% if user.is_authenticated %}
-                        <li>
-                            <span class='navbar-text'>{{ user }} - </span>
-                        </li>
-                        <li>
-                            <a href='{% url "logout" %}'>Logout</a>
-                        </li>
-                    {% else %}
-                        <a href='{% url "login" %}' class="login">Login</a>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-    </header>
-        {% block content %}
-        {% endblock %}
-    <footer></footer>
-    </body>
+  <head>
+    <meta charset="utf-8">
+    <title>あんにょん</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
+  </head>
+  <body>
+    <nav class='navbar navbar-expand-sm navbar-dark bg-dark fixed-top'>
+      <a class='navbar-brand' href='{% url "index" %}'>あんにょん</a>
+      <ul class='navbar-nav'>
+        {% if user.is_authenticated %}
+          <li class='nav-time'>
+              <span class='navbar-text'>{{ user }} - </span>
+          </li>
+          <li class='nav-item'>
+              <a href='{% url "logout" %}' class='logout nav-link'>Logout</a>
+          </li>
+        {% else %}
+          <a href='{% url "login" %}' class='login nav-link'>Login</a>
+          <li class="nav-item">
+              <a href='{% url "accounts:signup" %}' class='signup nav-link'> Sign up </a>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+    <div class='container'>
+      {% block content %}
+      {% endblock %}
+    </div>
+  </body>
 </html>
