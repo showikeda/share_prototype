@@ -1,52 +1,26 @@
 {% extends './base.html' %}
 {% block content %}
-    <div class="top-wrapper">
-        <div class="container">
-            <h1>あんにょん</h1>
-            <div class="comments">
-              <p>韓国語の本場の発音を学ぶ！</p>
-              <p>友達を増やすにも最高の場となる。</p>
-            </div>
-            <div class="btn-wrapper">
-                <a href="#" class="btn signup">新規登録はこちら</a>
-                <p>or signup up with</p>
-                <a href="#" class="btn facebook sns">
-                    <i class="fab fa-facebook"></i>
-                    Facebookで登録
-                </a>
-                <a href="#" class="btn twitter sns">
-                    <i class="fab fa-twitter-square"></i>
-                    Twitterで登録
-                </a>
-                <a href="#" class="btn line sns">
-                    <i class="fab fa-line"></i>
-                    LINEで登録
-                </a>
-            </div>
+<div class="contents">
+  <h1>あんにょん</h1>
+    <div class="key-visual">
+        <div>
+            <p>韓国語の本場の発音を学ぶ！</p>
+            <p>友達を増やすにも最高の場となる。</p>
         </div>
     </div>
-    <div class="main">
-        <div class="topics">
+    <div class="content">
+        <div>
             <p>最新の記事</p>
             {% for article in articles %}
-                <p><a href="{% url 'view_article' article.pk %}">{{ article.title }} - {{ article.posted_at }}</a></p>
+              <p class="topics"><a href="{% url 'view_article' article.pk %}">{{ article.title }} - {{ article.posted_at }}</a></p>
             {% endfor %}
-            <div class="topics-over">
-                <p>
-                    記事一覧へ
-                    <a href="{% url 'article_all' %}">
-                        <i class="more fas fa-angle-double-down fa-2x fa-border"></i>
-                    </a>
-                </p>
+            <div>
+              <p><a href="{% url 'article_all' %}"> - 記事一覧へ</a></p>
             </div>
-            <div class="topics-over">
-                <p>
-                    記事投稿へ
-                    <a href="{% url 'new' %}">
-                        <i class="more fas fa-angle-double-down fa-2x fa-border"></i>
-                    </a>
-                </p>
+            <div>
+              <p><a href="{% url 'new' %}"> - 記事投稿へ</a></p>
             </div>
         </div>
     </div>
+</div>
 {% endblock %}

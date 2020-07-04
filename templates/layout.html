@@ -1,33 +1,52 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="ja">
-  <head>
-    <meta charset="utf-8">
-    <title>あんにょん</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
-  </head>
-  <body>
-    <nav class='navbar navbar-expand-sm navbar-dark bg-dark fixed-top'>
-      <a class='navbar-brand' href='{% url "index" %}'>あんにょん</a>
-      <ul class='navbar-nav'>
-        {% if user.is_authenticated %}
-          <li class='nav-time'>
-              <span class='navbar-text'>{{ user }} - </span>
-          </li>
-          <li class='nav-item'>
-              <a href='{% url "logout" %}' class='logout nav-link'>Logout</a>
-          </li>
-        {% else %}
-          <a href='{% url "login" %}' class='login nav-link'>Login</a>
-          <li class="nav-item">
-              <a href='{% url "accounts:signup" %}' class='signup nav-link'> Sign up </a>
-          </li>
-        {% endif %}
-      </ul>
-    </nav>
-    <div class='container'>
-      {% block content %}
-      {% endblock %}
-    </div>
-  </body>
+<head>
+<meta charset="utf-8">
+<title>あんにょん</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>-->
+<!--    <style>body {padding-top: 80px;}</style>-->
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+
+<!--                    header                    -->
+
+<div class='header'>
+  <nav>
+    <ul class="nav-items">
+      <a href='{% url "index" %}' class="logo" ><h1>あんにょん</h1></a>
+      {% if user.is_authenticated %}
+      <li class="nav-item">
+        <span class=''>{{ user }} - </span>
+      </li>
+      <li class="nav-item">
+        <a href='{% url "logout" %}' class='logout'>Logout</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a href='{% url "login" %}' class='login'>Login</a>
+      </li>
+      <li class="nav-item">
+        <a href='{% url "accounts:signup" %}' class='signup'>Sign up</a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>
+
+<!--                    main                    -->
+
+<div class="main">
+  {% block content %}
+  {% endblock %}
+</div>
+
+<!--                    footer                    -->
+
+<div class="footer">
+
+</div>
+</body>
 </html>

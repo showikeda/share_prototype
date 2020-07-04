@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import Http404
 from django.http.response import JsonResponse
 from . import models
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -9,7 +10,7 @@ def index(request):
     context = {"articles": models.Article.objects.all()}
     return render(request, template_name, context)
 
-
+@login_required
 def new(request):
     template_name = "sns/new.html"
     if request.method == "POST":
@@ -35,6 +36,7 @@ def view_article(request, pk):
     return render(request, template_name, context)
 
 
+@login_required
 def edit(request, pk):
     template_name = "sns/edit.html"
     try:
@@ -50,6 +52,7 @@ def edit(request, pk):
     return render(request, template_name, context)
 
 
+@login_required
 def delete(request, pk):
     try:
         article = models.Article.objects.get(pk=pk)
@@ -57,6 +60,7 @@ def delete(request, pk):
         raise Http404
     article.delete()
     return redirect(article_all)
+
 
 
 def like(request, pk):

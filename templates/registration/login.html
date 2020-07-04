@@ -1,6 +1,7 @@
 {% extends '../layout.html' %}
 
 {% block content %}
+  <div class="contents">
     <h1>Login</h1>
     <section>
         {% if form.errors %}
@@ -20,7 +21,8 @@
             {% csrf_token %}
             <input type="hidden" name="next" value="{{ next }}" />
             {{ form.as_p }}
-            <button type="submit">Login</button>
+            <button type="submit"> - Login</button>
         </form>
     </section>
+  </div>
 {% endblock %}

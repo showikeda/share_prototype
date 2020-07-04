@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>{{ article.title }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>あんにょん</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
+    <style>body {padding-top: 80px;}</style>
     <script>
         function api_like() {
-            var api_url = "{%url 'api_like' article.pk %}";
+            var api_url = "{% url 'api_like' article.pk %}";
             var btn = document.getElementById("like");
             var request = new XMLHttpRequest();
             request.onreadystatechange = function () {
@@ -19,25 +21,45 @@
             request.send();
         }
     </script>
-</head>
-<body>
-    <a href="{% url 'article_all' %}">記事一覧へ</a>
-    <a href="{% url 'index' %}">トップページへ</a>
-    <h3>{{ article.title }}</h3>
-    <small>投稿日時 : {{ article.posted_at }}</small>
-    <small>最終更新 : {{ article.last_modify }}</small>
-    <p>{{ article.text }}</p>
-    <p><a onclick="api_like()"><span id="like">{{ article.like }}</span>いいね！</a></p>
-    <form action="" method="POST">
-        <p><lable for="com">コメント</lable></p>
-        {% csrf_token %}
-        <textarea name="text" id="com" cols="30" rows="10"></textarea>
-        <button type="submit">投稿</button>
-    </form>
-    {% for comment in article.comments.all %}
-        <p>{{ comment.text }}<br><small>{{ comment.posted_at }}</small></p>
-    {% empty %}
-    <p>コメントはありません</p>
-    {% endfor %}
-</body>
+  </head>
+  <body>
+    <nav class='navbar navbar-expand-sm navbar-dark bg-dark fixed-top'>
+      <a class='navbar-brand' href='{% url "index" %}'>あんにょん</a>
+      <ul class='navbar-nav'>
+        {% if user.is_authenticated %}
+          <li class='nav-time'>
+              <span class='navbar-text'>{{ user }} - </span>
+          </li>
+          <li class='nav-item'>
+              <a href='{% url "logout" %}' class='logout nav-link'>Logout</a>
+          </li>
+        {% else %}
+          <a href='{% url "login" %}' class='login nav-link'>Login</a>
+          <li class="nav-item">
+              <a href='{% url "accounts:signup" %}' class='signup nav-link'> Sign up </a>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+    <div class='container'>
+        <a href="{% url 'article_all' %}"> - 記事一覧へ</a>
+        <a href="{% url 'index' %}"> - トップページへ</a>
+        <h3>{{ article.title }}</h3>
+        <small>投稿日時 : {{ article.posted_at }}</small>
+        <small>最終更新 : {{ article.last_modify }}</small>
+        <p>{{ article.text }}</p>
+        <p><a onclick="api_like()"><span id="like">{{ article.like }}</span>いいね！</a></p>
+        <form action="" method="POST">
+            <p><lable for="com">コメント</lable></p>
+            {% csrf_token %}
+            <textarea name="text" id="com" cols="30" rows="10"></textarea>
+            <button type="submit"> - 投稿</button>
+        </form>
+        {% for comment in article.comments.all %}
+            <p>{{ comment.text }}<br><small>{{ comment.posted_at }}</small></p>
+        {% empty %}
+        <p>コメントはありません</p>
+        {% endfor %}
+    </div>
+  </body>
 </html>
