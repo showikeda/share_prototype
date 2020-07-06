@@ -1,3 +1,5 @@
+/* -webkit = Chrome,Safari */
+/* inherit = 親要素を継承する */
 *,
 *:before,
 *:after {
@@ -8,18 +10,18 @@
 html {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  font-size: 62.5%;
+  /* font-size: 62.5%; */
 }
 
 .btn,
 a.btn,
 button.btn {
-  font-size: 1.6rem;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 350;
   line-height: 1.5;
   position: relative;
   display: inline-block;
-  padding: 1rem 4rem;
+  padding: 1px 4px;
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -32,7 +34,7 @@ button.btn {
   text-decoration: none;
   letter-spacing: 0.1em;
   color: #212529;
-  border-radius: 0.5rem;
+  border-radius: 0.5px;
 }
 
 a.btn-border {
@@ -51,11 +53,11 @@ a.btn-border span {
 
   display: block;
 
-  padding: 1.25rem 3rem;
+  padding: 1.25px 3px;
 
   color: #000;
   border: 2px solid #000;
-  border-radius: 0.5rem;
+  border-radius: 0.5px;
   background: #fff;
 }
 
@@ -75,7 +77,7 @@ a.btn-border:before {
 
   border: 2px solid #000;
   border-top: 1px solid #000;
-  border-radius: 0 0 0.5rem 0.5rem;
+  border-radius: 0 0 0.5px 0.5px;
   background-image: -webkit-repeating-linear-gradient(
     135deg,
     #000,

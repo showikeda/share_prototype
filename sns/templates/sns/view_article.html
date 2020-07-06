@@ -1,45 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>あんにょん</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <script>
-        function api_like() {
-            var api_url = "{% url 'api_like' article.pk %}";
-            var btn = document.getElementById("like");
-            var request = new XMLHttpRequest();
-            request.onreadystatechange = function () {
-                if (request.readyState === 4 && request.status === 200) {
-                    var received_data = JSON.parse(request.responseText);
-                    btn.innerText = received_data.like;
-                }
-            }
-            request.open("GET",api_url);
-            request.send();
-        }
-    </script>
-  </head>
-  <body>
-    <nav class=''>
-      <a class='' href='{% url "index" %}'>あんにょん</a>
-      <ul class=''>
-        {% if user.is_authenticated %}
-          <li class=''>
-              <span class=''>{{ user }} - </span>
-          </li>
-          <li class='nav-item'>
-              <a href='{% url "logout" %}' class='logout'>Logout</a>
-          </li>
-        {% else %}
-          <a href='{% url "login" %}' class='login'>Login</a>
-          <li class="nav-item">
-              <a href='{% url "accounts:signup" %}' class='signup'>Sign up</a>
-          </li>
-        {% endif %}
-      </ul>
-    </nav>
+{% extends 'layout.html' %}
+{% block content %}
+
     <div class="contents">
       <h3>{{ article.title }}</h3>
       <small>投稿日時 : {{ article.posted_at }}</small>
@@ -58,5 +19,20 @@
       <p>コメントはありません</p>
       {% endfor %}
     </div>
-  </body>
-</html>
+    <script>
+
+        function api_like() {
+            var api_url = "{% url 'api_like' article.pk %}";
+            var btn = document.getElementById("like");
+            var request = new XMLHttpRequest();
+            request.onreadystatechange = function () {
+                if (request.readyState === 4 && request.status === 200) {
+                    var received_data = JSON.parse(request.responseText);
+                    btn.innerText = received_data.like;
+                }
+            }
+            request.open("GET",api_url);
+            request.send();
+        }
+    </script>
+{% endblock %}
