@@ -14,10 +14,11 @@
           <button type="submit"> - 投稿</button>
       </form>
       {% for comment in article.comments.all %}
-          <p>{{ comment.text }}<br><small>{{ comment.posted_at }}</small></p>
+          <p class="comments">{{ comment.text }}<br><small>{{ comment.posted_at }}</small></p>
       {% empty %}
       <p>コメントはありません</p>
       {% endfor %}
+      <a href="{% url 'index' %}" class="btn btn-border"><span>トップページへ</span></a>
     </div>
     <script>
 

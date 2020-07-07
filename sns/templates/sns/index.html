@@ -12,10 +12,10 @@
         <div>
             <p>最新の記事</p>
             {% for article in articles %}
-              <p class="topics"><a href="{% url 'view_article' article.pk %}">{{ article.title }} - {{ article.posted_at }}</a></p>
+              <a href="{% url 'view_article' article.pk %}" class=""><p class="topics">{{ article.title }} - {{ article.posted_at }}</p></a>
             {% endfor %}
             <div>
-              <p><a href="{% url 'article_all' %}" class="">記事一覧へ</a></p>
+              <a href="{% url 'article_all' %}" class="btn btn-border"><span>記事一覧へ</span></a>
             </div>
             <div>
               <a href="{% url 'new' %}" class="btn btn-border"><span>記事投稿へ</span></a>

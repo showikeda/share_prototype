@@ -2,7 +2,7 @@
 
 {% block content %}
   <div class="contents">
-    <h3>まい ぶろぐ 記事の編集ページ</h3>
+    <h3>記事の編集ページ</h3>
     <form action="" method="post">
         {% csrf_token %}
         <p><label for="title_input">記事のタイトル</label></p>
@@ -10,8 +10,8 @@
         <p><label for="text_area">記事の本文</label></p>
         <p><textarea name="text" id="text_area" cols="30" rows="10">{{ article.text }}</textarea></p>
         <p><button type="submit"> - 更新</button></p>
-        <a href="{% url 'index' %}">トップページへ</a>
-        <a href="{% url 'view_article' article.pk%}"> - 編集の取りやめ</a>
     </form>
+    <a href="{% url 'index' %}" class="btn btn-border"><span class="toppage">トップページへ</span></a>
+    <a href="{% url 'view_article' article.pk%}" class="btn btn-border"><span class="toppage">編集の取りやめ</span></a>
   </div>
 {% endblock %}

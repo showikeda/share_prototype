@@ -4,11 +4,11 @@
     <h3>投稿された記事一覧</h3>
     {% for article in articles %}
     <p class="topics"><a href="{% url 'view_article' article.pk %}">{{ article.title }} - {{ article.posted_at }}</a></p>
-    <a href="{% url 'edit' article.pk %}"> - 編集</a>
-    <a href="{% url 'delete' article.pk %}"> - 削除</a>
+    <a href="{% url 'edit' article.pk %}" class="btn btn-border"><span>編集</span></a>
+    <a href="{% url 'delete' article.pk %}" class="btn btn-border"><span>削除</span></a>
     {% endfor %}
     <div>
-        <a href="{% url 'index' %}"> - トップページへ</a>
+        <a href="{% url 'index' %}" class="btn btn-border"><span class="toppage">トップページへ</span></a>
     </div>
   </div>
 {% endblock %}

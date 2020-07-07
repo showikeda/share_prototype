@@ -1,0 +1,40 @@
+input[type='text']{
+  width: 100%;
+  max-width: 400px;
+  padding: 5px;
+  margin: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+textarea{
+  width: 64%;
+  height: 128px;
+  padding: 5px;
+  margin: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+button[type='submit']{
+  border: none;
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #333333;
+  color: #FAFAFA;
+  font-weight: bold;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  margin: 0 auto 8px auto;
+}
