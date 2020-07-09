@@ -38,6 +38,17 @@
       {% endif %}
     </ul>
   </nav>
+  <div>
+    {% if searchForm %}
+	    <form action='{% url "bbs:index" %}' method='get'>
+	        <div class=''>
+	            {{ searchForm }}
+	            <input type="submit" class="" value="OK" />
+	            <a href="{% url 'bbs:index' %}" class="">クリア</a>
+	        </div>
+	    </form>
+	{% endif %}
+  </div>
 </div>
 
 <!--                    main                    -->

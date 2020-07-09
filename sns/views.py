@@ -2,12 +2,25 @@ from django.shortcuts import render, redirect
 from django.http import Http404
 from django.http.response import JsonResponse
 from . import models
+from .models import Article
 from django.contrib.auth.decorators import login_required
+from .forms import SearchForm
 
 
 def index(request):
+    searchForm = SearchForm(request.GET)
+    if searchForm.is_valid():
+        keyword = searchForm.cleaned_data['keyword']
+        articles = Article.objects.filter(content__contains=keyword)
+    else:
+        searchForm = SearchForm()
+        articles = Article.objects.all()
+
     template_name = "sns/index.html"
-    context = {"articles": models.Article.objects.all()}
+    context = {
+        "articles": articles,
+        'searchForm': searchForm,
+    }
     return render(request, template_name, context)
 
 @login_required
@@ -34,7 +47,6 @@ def view_article(request, pk):
         models.Comment.objects.create(text=request.POST["text"], article=article)
     context = {"article": article}
     return render(request, template_name, context)
-
 
 @login_required
 def edit(request, pk):
