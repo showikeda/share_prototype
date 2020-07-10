@@ -11,7 +11,7 @@ def index(request):
     searchForm = SearchForm(request.GET)
     if searchForm.is_valid():
         keyword = searchForm.cleaned_data['keyword']
-        articles = Article.objects.filter(content__contains=keyword)
+        articles = Article.objects.filter(title__contains=keyword)
     else:
         searchForm = SearchForm()
         articles = Article.objects.all()

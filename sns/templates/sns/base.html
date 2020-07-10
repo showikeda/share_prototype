@@ -40,11 +40,10 @@
   </nav>
   <div>
     {% if searchForm %}
-	    <form action='{% url "bbs:index" %}' method='get'>
-	        <div class=''>
+	    <form action='{% url "index" %}' method='get'>
+	        <div>
 	            {{ searchForm }}
 	            <input type="submit" class="" value="OK" />
-	            <a href="{% url 'bbs:index' %}" class="">クリア</a>
 	        </div>
 	    </form>
 	{% endif %}
