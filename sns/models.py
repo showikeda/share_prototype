@@ -13,6 +13,7 @@ class Comment(models.Model):
     text = models.TextField()
     posted_at = models.DateTimeField(auto_now_add=True)
     article = models.ForeignKey(to=Article, related_name='comments', on_delete=models.CASCADE)
+    # image = models.ImageField(upload_to='images', blank=True, null=True)
 
     def __str__(self):
         return self.text

@@ -23,6 +23,7 @@ def index(request):
     }
     return render(request, template_name, context)
 
+
 @login_required
 def new(request):
     template_name = "sns/new.html"
@@ -48,6 +49,7 @@ def view_article(request, pk):
     context = {"article": article}
     return render(request, template_name, context)
 
+
 @login_required
 def edit(request, pk):
     template_name = "sns/edit.html"
@@ -72,7 +74,6 @@ def delete(request, pk):
         raise Http404
     article.delete()
     return redirect(article_all)
-
 
 
 def like(request, pk):
