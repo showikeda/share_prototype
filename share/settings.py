@@ -116,6 +116,6 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 
-# IMAGE_ROOT = os.path.join(BASE_DIR, 'images')
-#
-# IMAGE_URL = '/share/images/'
+IMAGE_ROOT = os.path.join(BASE_DIR, 'images')
+
+IMAGE_URL = '/images/'
