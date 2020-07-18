@@ -4,7 +4,7 @@ from django.http.response import JsonResponse
 from . import models
 from .models import Article
 from django.contrib.auth.decorators import login_required
-from .forms import SearchForm
+from .forms import SearchForm, CommentForm
 
 
 def index(request):
@@ -21,6 +21,7 @@ def index(request):
         "articles": articles,
         'searchForm': searchForm,
     }
+
     return render(request, template_name, context)
 
 
@@ -39,6 +40,7 @@ def article_all(request):
 
 
 def view_article(request, pk):
+    comment = CommentForm(request.GET)
     template_name = 'sns/view_article.html'
     try:
         article = models.Article.objects.get(pk=pk)
@@ -46,7 +48,10 @@ def view_article(request, pk):
         raise Http404
     if request.method == "POST":
         models.Comment.objects.create(text=request.POST["text"], article=article)
-    context = {"article": article}
+    context = {
+        "article": article,
+        "comment": comment
+    }
     return render(request, template_name, context)
 
 

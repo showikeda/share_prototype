@@ -15,5 +15,5 @@ urlpatterns = [
     path('', RedirectView.as_view(url='/sns/')),
 ]
 
-# if settings.DEBUG:
-#     urlpatterns += static(settings.IMAGE_URL, document_root=settings.IMAGE_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.IMAGE_URL, document_root=settings.IMAGE_ROOT)
