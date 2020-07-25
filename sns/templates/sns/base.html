@@ -37,6 +37,10 @@
       </li>
       {% endif %}
       <li>
+        <form action="" method="get">
+          <input name="query" value="{{ request.GET.query }}" type="text">
+          <button type="submit">検索する</button>
+        </form>
 <!--      {% if searchForm %}-->
 <!--          <form action='{% url "index" %}' method='get'>-->
 <!--              <div>-->
@@ -48,10 +52,6 @@
       </li>
     </ul>
   </nav>
-    <form action="" method="get">
-      <input name="query" value="{{ request.GET.query }}" type="text">
-      <button type="submit">検索する</button>
-    </form>
 </div>
 
 <!--                    main                    -->
