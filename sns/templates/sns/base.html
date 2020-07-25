@@ -36,18 +36,18 @@
         <a href='{% url "accounts:signup" %}' class='signup'>Sign up</a>
       </li>
       {% endif %}
+      <li>
+<!--      {% if searchForm %}-->
+<!--          <form action='{% url "index" %}' method='get'>-->
+<!--              <div>-->
+<!--                  {{ searchForm }}-->
+<!--                  <input type="submit" class="" value="OK" />-->
+<!--              </div>-->
+<!--          </form>-->
+<!--      {% endif %}-->
+      </li>
     </ul>
   </nav>
-  <div>
-    {% if searchForm %}
-	    <form action='{% url "index" %}' method='get'>
-	        <div>
-	            {{ searchForm }}
-	            <input type="submit" class="" value="OK" />
-	        </div>
-	    </form>
-	{% endif %}
-  </div>
 </div>
 
 <!--                    main                    -->

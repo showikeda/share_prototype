@@ -4,25 +4,45 @@ from django.http.response import JsonResponse
 from . import models
 from .models import Article
 from django.contrib.auth.decorators import login_required
-from .forms import SearchForm, CommentForm
+from .forms import CommentForm
+from django.views.generic import ListView
+# from django.db.models import Q
 
 
-def index(request):
-    searchForm = SearchForm(request.GET)
-    if searchForm.is_valid():
-        keyword = searchForm.cleaned_data['keyword']
-        articles = Article.objects.filter(title__contains=keyword)
-    else:
-        searchForm = SearchForm()
-        articles = Article.objects.all()
+# def index(request):
+#     searchForm = SearchForm(request.GET)
+#     if searchForm.is_valid():
+#         keyword = searchForm.cleaned_data['keyword']
+#         articles = Article.objects.filter(title__contains=keyword)
+#     else:
+#         searchForm = SearchForm()
+#         articles = Article.objects.all()
+#
+#     template_name = "sns/index.html"
+#     context = {
+#         "articles": articles,
+#         'searchForm': searchForm,
+#     }
+#
+#     return render(request, template_name, context)
 
-    template_name = "sns/index.html"
-    context = {
-        "articles": articles,
-        'searchForm': searchForm,
-    }
 
-    return render(request, template_name, context)
+class IndexList(ListView):
+    template_name = 'sns/index.html'
+    queryset = Article.objects.order_by('-posted_at')
+    paginate_by = 5
+    model = Article
+#
+#     def get_queryset(self):
+#         q_word = self.request.GET.get('query')
+#
+#         if q_word:
+#             object_list = Article.objects.filter(
+#                 Q(title__icontains=q_word) | Q(text__icontains=q_word)
+#             )
+#         else:
+#             object_list = Article.objects.all()
+#         return object_list
 
 
 @login_required
@@ -33,7 +53,8 @@ def new(request):
             title=request.POST["title"],
             text=request.POST["text"]
         )
-        return redirect(index)
+        # return redirect(index)
+        return redirect(IndexList)
     return render(request, template_name)
     # return redirect(article_all)
 
@@ -53,10 +74,15 @@ def new(request):
 #     return render(request, 'article/new.html', {'form': form})
 
 
-def article_all(request):
+# def article_all(request):
+#     template_name = "sns/article_all.html"
+#     context = {"articles": models.Article.objects.all()}
+#     return render(request, template_name, context)
+
+class ArticleList(ListView):
     template_name = "sns/article_all.html"
-    context = {"articles": models.Article.objects.all()}
-    return render(request, template_name, context)
+    queryset = Article.objects.order_by('-posted_at')
+    model = Article
 
 
 def view_article(request, pk):
@@ -98,7 +124,8 @@ def delete(request, pk):
     except models.Article.DoesNotExist:
         raise Http404
     article.delete()
-    return redirect(article_all)
+    # return redirect(article_all)
+    return redirect(ArticleList)
 
 
 def like(request, pk):

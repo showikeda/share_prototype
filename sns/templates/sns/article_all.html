@@ -2,8 +2,17 @@
 {% block content %}
   <div class="contents">
     <h3>投稿された記事一覧</h3>
-    {% for article in articles %}
-    <p class="topics"><a href="{% url 'view_article' article.pk %}">{{ article.title }}</a></p>
+<!--    {% for article in articles %}-->
+<!--    <p class="topics"><a href="{% url 'view_article' article.pk %}">{{ article.title }}</a></p>-->
+<!--    <a href="{% url 'edit' article.pk %}" class="btn btn-border"><span>編集</span></a>-->
+<!--    <a href="{% url 'delete' article.pk %}" class="btn btn-border"><span>削除</span></a>-->
+<!--    {% endfor %}-->
+    {% for article in object_list %}
+    <p class="topics">
+      <a href="{% url 'view_article' article.pk %}">
+        {{ article.title }}
+      </a>
+    </p>
     <a href="{% url 'edit' article.pk %}" class="btn btn-border"><span>編集</span></a>
     <a href="{% url 'delete' article.pk %}" class="btn btn-border"><span>削除</span></a>
     {% endfor %}

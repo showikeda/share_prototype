@@ -11,9 +11,16 @@
     <div class="content">
         <div>
             <p>最新の記事</p>
-            {% for article in articles %}
-              <a href="{% url 'view_article' article.pk %}" class=""><p class="topics">{{ article.title }}</p></a>
+            {% for article in object_list %}
+            <p class="topics">
+              <a href="{% url 'view_article' article.pk %}">
+                {{ article.title }}
+              </a>
+            </p>
             {% endfor %}
+<!--            {% for article in articles %}-->
+<!--              <a href="{% url 'view_article' article.pk %}" class=""><p class="topics">{{ article.title }}</p></a>-->
+<!--            {% endfor %}-->
             <div>
               <a href="{% url 'article_all' %}" class="btn btn-border"><span>記事一覧へ</span></a>
             </div>
