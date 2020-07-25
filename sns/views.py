@@ -29,7 +29,11 @@ def index(request):
 def new(request):
     template_name = "sns/new.html"
     if request.method == "POST":
-        models.Article.objects.create(title=request.POST["title"], text=request.POST["text"])
+        models.Article.objects.create(
+            title=request.POST["title"],
+            text=request.POST["text"]
+        )
+        return redirect(index)
     return render(request, template_name)
     # return redirect(article_all)
 
