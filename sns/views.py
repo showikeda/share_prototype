@@ -31,6 +31,22 @@ def new(request):
     if request.method == "POST":
         models.Article.objects.create(title=request.POST["title"], text=request.POST["text"])
     return render(request, template_name)
+    # return redirect(article_all)
+
+# def new(request):
+#     form = ArticleForm(request.POST)
+#     if form.is_valid():
+#         article = Article()
+#         article.title = form.cleaned_data['title']
+#         article.text = form.cleaned_data['text']
+#         article.photo = form.cleaned_data['photo']
+#
+#         Article.objects.create(
+#             title=article.title,
+#             text=article.text,
+#             photo=article.photo,
+#         )
+#     return render(request, 'article/new.html', {'form': form})
 
 
 def article_all(request):

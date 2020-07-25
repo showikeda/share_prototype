@@ -1,9 +1,5 @@
 from django import forms
-
 from .models import Comment
-
-
-# from share.sns.models import Comment
 
 
 class SearchForm(forms.Form):
@@ -17,10 +13,4 @@ class CommentForm(forms.ModelForm):
 
     class Meta:
         model = Comment
-        fields = ('text', 'file')
-
-
-# class ImageForm(forms.ModelForm):
-#     class Meta:
-#         model = Image
-#         fields = 'image'
+        fields = ('text', 'image')
