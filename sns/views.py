@@ -6,7 +6,7 @@ from .models import Article
 from django.contrib.auth.decorators import login_required
 from .forms import CommentForm
 from django.views.generic import ListView
-# from django.db.models import Q
+from django.db.models import Q
 
 
 # def index(request):
@@ -32,17 +32,17 @@ class IndexList(ListView):
     queryset = Article.objects.order_by('-posted_at')
     paginate_by = 5
     model = Article
-#
-#     def get_queryset(self):
-#         q_word = self.request.GET.get('query')
-#
-#         if q_word:
-#             object_list = Article.objects.filter(
-#                 Q(title__icontains=q_word) | Q(text__icontains=q_word)
-#             )
-#         else:
-#             object_list = Article.objects.all()
-#         return object_list
+
+    def get_queryset(self):
+        q_word = self.request.GET.get('query')
+
+        if q_word:
+            object_list = Article.objects.filter(
+                Q(title__icontains=q_word) | Q(text__icontains=q_word)
+            )
+        else:
+            object_list = Article.objects.all()
+        return object_list
 
 
 @login_required
