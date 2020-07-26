@@ -36,11 +36,15 @@
         <a href='{% url "accounts:signup" %}' class='signup'>Sign up</a>
       </li>
       {% endif %}
-      <li>
-        <form action="" method="get">
+      <form action="" method="get">
+        <p>
           <input name="query" value="{{ request.GET.query }}" type="text">
+        </p>
+        <p>
           <button type="submit">検索する</button>
-        </form>
+        </p>
+      </form>
+<!--      <li>-->
 <!--      {% if searchForm %}-->
 <!--          <form action='{% url "index" %}' method='get'>-->
 <!--              <div>-->
@@ -49,7 +53,7 @@
 <!--              </div>-->
 <!--          </form>-->
 <!--      {% endif %}-->
-      </li>
+<!--      </li>-->
     </ul>
   </nav>
 </div>
