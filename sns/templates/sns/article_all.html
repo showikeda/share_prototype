@@ -13,8 +13,6 @@
         {{ article.title }}
       </a>
     </p>
-    <a href="{% url 'edit' article.pk %}" class="btn btn-border"><span>編集</span></a>
-    <a href="{% url 'delete' article.pk %}" class="btn btn-border"><span>削除</span></a>
     {% endfor %}
     <div>
         <a href="{% url 'index' %}" class="btn btn-border"><span class="toppage">トップページへ</span></a>

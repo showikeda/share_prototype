@@ -1,0 +1,19 @@
+.header input[type="text"] {
+  margin: 0;
+  height: 32px;
+  width: 192px;
+}
+.header button {
+  margin: 0;
+  display: inline;
+  height: 32px;
+  width: 96px;
+}
+.header form {
+  display: inline;
+}
+
+.li.nav-item form {
+  display: grid;
+  place-items: center;
+}

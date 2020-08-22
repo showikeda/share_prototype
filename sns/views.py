@@ -9,24 +9,6 @@ from django.views.generic import ListView
 from django.db.models import Q
 
 
-# def index(request):
-#     searchForm = SearchForm(request.GET)
-#     if searchForm.is_valid():
-#         keyword = searchForm.cleaned_data['keyword']
-#         articles = Article.objects.filter(title__contains=keyword)
-#     else:
-#         searchForm = SearchForm()
-#         articles = Article.objects.all()
-#
-#     template_name = "sns/index.html"
-#     context = {
-#         "articles": articles,
-#         'searchForm': searchForm,
-#     }
-#
-#     return render(request, template_name, context)
-
-
 class IndexList(ListView):
     template_name = 'sns/index.html'
     queryset = Article.objects.order_by('-posted_at')
@@ -58,26 +40,7 @@ def new(request):
     return render(request, template_name)
     # return redirect(article_all)
 
-# def new(request):
-#     form = ArticleForm(request.POST)
-#     if form.is_valid():
-#         article = Article()
-#         article.title = form.cleaned_data['title']
-#         article.text = form.cleaned_data['text']
-#         article.photo = form.cleaned_data['photo']
-#
-#         Article.objects.create(
-#             title=article.title,
-#             text=article.text,
-#             photo=article.photo,
-#         )
-#     return render(request, 'article/new.html', {'form': form})
 
-
-# def article_all(request):
-#     template_name = "sns/article_all.html"
-#     context = {"articles": models.Article.objects.all()}
-#     return render(request, template_name, context)
 
 class ArticleList(ListView):
     template_name = "sns/article_all.html"

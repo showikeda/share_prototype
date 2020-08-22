@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="{% static 'css/topics.css' %}">
 <link rel="stylesheet" href="{% static 'css/textbox.css' %}">
 <link rel="stylesheet" href="{% static 'css/comment.css' %}">
+<link rel="stylesheet" href="{% static 'css/search.css' %}">
 </head>
 <body>
 
@@ -36,24 +37,13 @@
         <a href='{% url "accounts:signup" %}' class='signup'>Sign up</a>
       </li>
       {% endif %}
-      <form action="" method="get">
-        <p>
+      <li class="nav-item">
+        <form action="" method="get">
           <input name="query" value="{{ request.GET.query }}" type="text">
-        </p>
-        <p>
-          <button type="submit">検索する</button>
-        </p>
-      </form>
-<!--      <li>-->
-<!--      {% if searchForm %}-->
-<!--          <form action='{% url "index" %}' method='get'>-->
-<!--              <div>-->
-<!--                  {{ searchForm }}-->
-<!--                  <input type="submit" class="" value="OK" />-->
-<!--              </div>-->
-<!--          </form>-->
-<!--      {% endif %}-->
-<!--      </li>-->
+<!--          <button type="submit">検索する</button>-->
+          <input type="submit" value="検索">
+        </form>
+      </li>
     </ul>
   </nav>
 </div>

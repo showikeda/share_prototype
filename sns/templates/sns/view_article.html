@@ -6,6 +6,8 @@
       <small>投稿日時 : {{ article.posted_at }}</small>
       <small>最終更新 : {{ article.last_modify }}</small>
       <p>{{ article.text }}</p>
+      <a href="{% url 'edit' article.pk %}" class="btn btn-border"><span>編集</span></a>
+      <a href="{% url 'delete' article.pk %}" class="btn btn-border"><span>削除</span></a>
       <p><a onclick="api_like()"><span id="like">{{ article.like }}</span>いいね！</a></p>
       <form action="" method="POST">
           <p><lable for="com">コメント</lable></p>
