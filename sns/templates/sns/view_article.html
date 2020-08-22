@@ -2,6 +2,7 @@
 {% block content %}
 
     <div class="contents">
+<!-------------------- content -------------------->
       <div class="content">
         <h3>{{ article.title }}</h3>
         <small>投稿日時 : {{ article.posted_at }}</small>
@@ -11,11 +12,10 @@
         <a href="{% url 'delete' article.pk %}" class="btn btn-border"><span>削除</span></a>
         <p><a onclick="api_like()"><span id="like">{{ article.like }}</span>いいね！</a></p>
       </div>
-      <!----------- coment text ------------->
+<!------------------ coment text ------------------->
       <form action="" method="POST">
-          <p><lable for="com">コメント</lable></p>
           {% csrf_token %}
-          <textarea name="text" id="com" cols="30" rows="10"></textarea>
+          <textarea name="text" id="com" cols="30" rows="10" placeholder="この記事にコメントする..."></textarea>
           <button type="submit"> - 投稿</button>
       </form>
       {% for comment in article.comments.all %}

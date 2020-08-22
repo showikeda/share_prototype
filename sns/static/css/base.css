@@ -57,6 +57,17 @@ ul {
   margin: 24px;
 }
 
+/* -------------------- contents -------------------- */
+
+.content {
+  height: auto;
+  width: 64%;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;s
+
+}
+
 /* -------------------- top-page -------------------- */
 .toppage {
   margin-top: 16px;
