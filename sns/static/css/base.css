@@ -9,7 +9,8 @@ html,body {
 }
 
 body {
-  background-color: #F5F5F5;
+  /* background-color: #F5F5F5; */
+  background-color: #DADDE2;
 }
 
 
@@ -22,7 +23,6 @@ a {
 
 .header {
   height: 64px;
-  margin-bottom: 64px;
   width: 100%;
   background-color: white;
   border-bottom: solid 2px #ccc;
@@ -30,7 +30,7 @@ a {
 
 .logo {
   margin: 16px;
-  color: #333333;
+  /* color: #333333; */
   display: inline-block;
 }
 
@@ -40,7 +40,8 @@ ul {
 
 .nav-items {
   padding: 0px;
-  float: left;s
+  float: left;
+  color: #3B3B3B;
 }
 
 .nav-item {
@@ -50,28 +51,57 @@ ul {
 
 /* -------------------- main -------------------- */
 
-.main .contents {
+.main .contents .top-contents {
+  background-image: url(/media/images/topPage.jpg);
   text-align: center;
+  color: #E6F4F1;
+}
+
+.main .contents .top-contents h1 {
+  font-size: 3rem;
+  padding: 64px;
 }
 
 .key-visual {
-  margin: 24px;
-  padding-bottom: 48px;
+  padding-bottom: 7rem;
 }
 
-.main .contents .top-contents {
-  background-image: url(/media/images/topPage.jpg);
+.key-visual p {
+  padding-bottom: 0.75rem;
 }
 
-/* -------------------- contents -------------------- */
+.main .content {
+  text-align: center;
+  color: #3B3B3B;
+}
+
+.main .content h3 {
+  margin: 2rem 0;
+}
+
+.topics {
+  background-color: #FFFFFF;
+  margin: 16px auto;
+  height: 32px;
+  width: 500px;
+  border-radius: 8px;
+}
+
+/* -------------------- view_article - contents -------------------- */
+
+.contents-article {
+  text-align: center;
+}
 
 .content-article {
-  height: auto;
   width: 64%;
   background-color: white;
   margin-left: auto;
-  margin-right: auto;s
+  margin-right: auto;
+}
 
+.content-article h3 {
+  padding: 2rem;
 }
 
 .like {

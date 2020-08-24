@@ -10,7 +10,7 @@
   </div>
   <div class="content">
       <div>
-          <p>最新の記事</p>
+          <h3>最新の記事</h3>
           {% for article in object_list %}
           <p class="topics">
             <a href="{% url 'view_article' article.pk %}">
