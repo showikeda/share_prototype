@@ -27,20 +27,20 @@
         <span class=''>{{ user }} - </span>
       </li>
       <li class="nav-item">
-        <a href='{% url "logout" %}' class='logout'>Logout</a>
+        <a href='{% url "logout" %}' class='logout'><i class="fas fa-sign-out-alt"></i> Logout</a>
       </li>
       {% else %}
       <li class="nav-item">
-        <a href='{% url "login" %}' class='login'>Login</a>
+        <a href='{% url "login" %}' class='login'><i class="fas fa-sign-in-alt"></i> Login</a>
       </li>
       <li class="nav-item">
-        <a href='{% url "accounts:signup" %}' class='signup'>Sign up</a>
+        <a href='{% url "accounts:signup" %}' class='signup'><i class="fas fa-user-plus"></i> Sign up</a>
       </li>
       {% endif %}
       <li class="nav-item">
-        <form action="" method="get">
-          <input name="query" value="{{ request.GET.query }}" type="text">
-<!--          <button type="submit">検索する</button>-->
+        <form id="form2" action="" method="get">
+          <input id="sbox2" id="s" name="s" value="{{ request.GET.query }}" type="text" placeholder="検索ワードを入力">
+         <!-- <button type="submit" id="sbtn2"><i class="fas fa-search"></i></button> -->
           <input type="submit" value="検索">
         </form>
       </li>

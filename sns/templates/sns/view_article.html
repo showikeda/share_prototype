@@ -1,16 +1,17 @@
 {% extends 'layout.html' %}
 {% block content %}
 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
     <div class="contents">
 <!-------------------- content -------------------->
-      <div class="content">
+      <div class="content-article">
         <h3>{{ article.title }}</h3>
         <small>投稿日時 : {{ article.posted_at }}</small>
         <small>最終更新 : {{ article.last_modify }}</small>
         <p>{{ article.text }}</p>
         <a href="{% url 'edit' article.pk %}" class="btn btn-border"><span>編集</span></a>
         <a href="{% url 'delete' article.pk %}" class="btn btn-border"><span>削除</span></a>
-        <p><a onclick="api_like()"><span id="like">{{ article.like }}</span>いいね！</a></p>
+        <p class="like"><a onclick="api_like()"><i class="fas fa-thumbs-up"></i><span id="like">{{ article.like }}</span></a></p>
       </div>
 <!------------------ coment text ------------------->
       <form action="" method="POST">

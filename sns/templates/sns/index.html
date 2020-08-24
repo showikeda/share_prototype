@@ -1,33 +1,33 @@
 {% extends './base.html' %}
 {% block content %}
 <div class="contents">
-  <h1>あんにょん</h1>
+  <div class="top-contents">
+    <h1>あんにょん</h1>
     <div class="key-visual">
-        <div>
-            <p>韓国語の本場の発音を学ぶ！</p>
-            <p>友達を増やすにも最高の場となる。</p>
-        </div>
+      <p>韓国語の本場の発音を学ぶ！</p>
+      <p>友達を増やすにも最高の場となる。</p>
     </div>
-    <div class="content">
-        <div>
-            <p>最新の記事</p>
-            {% for article in object_list %}
-            <p class="topics">
-              <a href="{% url 'view_article' article.pk %}">
-                {{ article.title }}
-              </a>
-            </p>
-            {% endfor %}
+  </div>
+  <div class="content">
+      <div>
+          <p>最新の記事</p>
+          {% for article in object_list %}
+          <p class="topics">
+            <a href="{% url 'view_article' article.pk %}">
+              {{ article.title }}
+            </a>
+          </p>
+          {% endfor %}
 <!--            {% for article in articles %}-->
 <!--              <a href="{% url 'view_article' article.pk %}" class=""><p class="topics">{{ article.title }}</p></a>-->
 <!--            {% endfor %}-->
-            <div>
-              <a href="{% url 'article_all' %}" class="btn btn-border"><span>記事一覧へ</span></a>
-            </div>
-            <div>
-              <a href="{% url 'new' %}" class="btn btn-border"><span>記事投稿へ</span></a>
-            </div>
-        </div>
-    </div>
+          <div>
+            <a href="{% url 'article_all' %}" class="btn btn-border"><span>記事一覧へ</span></a>
+          </div>
+          <div>
+            <a href="{% url 'new' %}" class="btn btn-border"><span>記事投稿へ</span></a>
+          </div>
+      </div>
+  </div>
 </div>
 {% endblock %}
