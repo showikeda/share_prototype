@@ -96,6 +96,7 @@ ul {
 .content-article {
   width: 64%;
   background-color: white;
+  margin-top: 1rem;
   margin-left: auto;
   margin-right: auto;
 }
@@ -104,17 +105,51 @@ ul {
   padding: 2rem;
 }
 
+.content-text {
+  margin: 1rem;
+}
+
 .like {
   margin-top: 8px;
   padding-bottom: 8px;
 }
 
 .like a {
-  color: #333333;
+  color: #9B9B9B;
 }
 
 .like a i {
   margin-right: 3px;
+}
+
+/* -------------------- viewall-contents -------------------- */
+
+.viewall-contents {
+  text-align: center;
+}
+
+.viewall-contents h3 {
+  margin: 2rem;
+}
+
+/* -------------------- edit-contents -------------------- */
+
+.edit-contents {
+  text-align: center;
+}
+
+.edit-contents h3 {
+  margin: 2rem;
+}
+
+/* -------------------- create-page -------------------- */
+
+.create-contents {
+  text-align: center;
+}
+
+.create-contents h3 {
+  margin: 2rem;
 }
 
 /* -------------------- top-page -------------------- */

@@ -7,8 +7,7 @@
       <div class="content-article">
         <h3>{{ article.title }}</h3>
         <small>投稿日時 : {{ article.posted_at }}</small>
-        <small>最終更新 : {{ article.last_modify }}</small>
-        <p>{{ article.text }}</p>
+        <p class="content-text">{{ article.text }}</p>
         <a href="{% url 'edit' article.pk %}" class="btn btn-border"><span>編集</span></a>
         <a href="{% url 'delete' article.pk %}" class="btn btn-border"><span>削除</span></a>
         <p class="like"><a onclick="api_like()"><i class="fas fa-thumbs-up"></i><span id="like">{{ article.like }}</span></a></p>
@@ -19,12 +18,12 @@
           <textarea name="text" id="com" cols="30" rows="10" placeholder="この記事にコメントする..."></textarea>
           <button type="submit"> - 投稿</button>
       </form>
+      <a href="{% url 'index' %}" class="btn btn-border"><span>トップページへ</span></a>
       {% for comment in article.comments.all %}
           <p class="comments">{{ comment.text }}<br><small>{{ comment.posted_at }}</small></p>
       {% empty %}
       <p>コメントはありません</p>
       {% endfor %}
-      <a href="{% url 'index' %}" class="btn btn-border"><span>トップページへ</span></a>
     </div>
 
     {% for book in books %}

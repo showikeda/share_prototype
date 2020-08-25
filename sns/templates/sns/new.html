@@ -1,14 +1,14 @@
 {% extends './base.html' %}
 {% block content %}
-  <div class="contents">
-    <h3>まい ぶろぐ 新規記事の投稿ページ</h3>
+  <div class="create-contents">
+    <h3>あんにょん</h3>
     <form action="" method="post">
         {% csrf_token %}
-        <p><label for="title_input"> - 記事のタイトル</label></p>
+        <p><label for="title_input">title</label></p>
         <p><input type="text" name="title" id="title_input"></p>
-        <p><label for="text_area">記事の本文</label></p>
+        <p><label for="text_area">Text</label></p>
         <p><textarea name="text" id="text_area" cols="30" rows="10"></textarea></p>
-        <p><button type="submit"> - 投稿</button></p>
+        <p><button type="submit"> 投稿する</button></p>
     </form>
     <a href="{% url 'index' %}" class="btn btn-border"><span class="toppage">トップページへ</span></a>
   </div>

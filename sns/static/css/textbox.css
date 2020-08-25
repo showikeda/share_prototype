@@ -12,9 +12,9 @@ input[type='text']{
 
 textarea{
   width: 64%;
-  height: 64px;
+  height: 10rem;
   padding: 5px;
-  margin: 16px;
+  margin: 2rem;
   border-radius: 5px;
   border: 1px solid #ccc;
   appearance: none;

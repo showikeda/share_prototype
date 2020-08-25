@@ -1,17 +1,17 @@
 {% extends './base.html' %}
 
 {% block content %}
-  <div class="contents">
-    <h3>記事の編集ページ</h3>
+  <div class="edit-contents">
+    <h3>編集</h3>
     <form action="" method="post">
         {% csrf_token %}
-        <p><label for="title_input">記事のタイトル</label></p>
+        <p><label for="title_input">Title</label></p>
         <p><input type="text" name="title" id="title_input" value="{{ article.title }}"></p>
-        <p><label for="text_area">記事の本文</label></p>
+        <p><label for="text_area">Text</label></p>
         <p><textarea name="text" id="text_area" cols="30" rows="10">{{ article.text }}</textarea></p>
-        <p><button type="submit"> - 更新</button></p>
+        <p><button type="submit">Update</button></p>
     </form>
     <a href="{% url 'index' %}" class="btn btn-border"><span class="toppage">トップページへ</span></a>
-    <a href="{% url 'view_article' article.pk%}" class="btn btn-border"><span class="toppage">編集の取りやめ</span></a>
+    <a href="{% url 'view_article' article.pk%}" class="btn btn-border"><span class="toppage">キャンセル</span></a>
   </div>
 {% endblock %}
